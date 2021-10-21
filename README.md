@@ -1,4 +1,5 @@
 # Project-1-JS
+Project done by LEBERT Charles and EVEN Paul
 Here is the project one of javascript that Paul Even and I did.
 We worked on a TODO-list web application.
 The app is called Tick Tick.
