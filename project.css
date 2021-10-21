@@ -1,0 +1,15 @@
+.entry{
+    background-color: black;
+}
+#title{
+    color: white;
+    margin: auto;
+}
+#logs{
+    color: white;
+    margin-left: 0%;
+}
+footer{
+    position: relative;
+    bottom: 0;
+}
