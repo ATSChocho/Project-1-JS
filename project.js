@@ -1,4 +1,6 @@
-log();//we check if there is someone logged with the fuction
+window.onload = display;//we use this to display or not certain blocks on the web page, for example if you are logged the connection form won't display
+
+
 if (localStorage.getItem("tcompt") == null) {   //this condition is used to see if there is already a counter existing or not
             localStorage.setItem("tcompt", 1);  //if there isn't any counter existing, then we create one
     }
@@ -111,14 +113,15 @@ else {
                 document.getElementById(tag + "row" + temp).remove();
                 localStorage.removeItem(tag + "entry" + temp);
             }
+            if (localStorage.getItem(tag + "state" + temp) != null) {   //and of course we remove the different state of the tasks saved in the local storage
+            localStorage.removeItem(tag + "state" + temp);
+            }
             temp++;
         }
         if (localStorage.getItem(tag + "compt") != null) {  //we also remove the dedicated counter
             localStorage.removeItem(tag + "compt");
         }
-        if (localStorage.getItem(tag + "state" + temp) != null) {   //and of course we remove the different state of the tasks saved in the local storage
-            localStorage.removeItem(tag + "state" + temp);
-        }
+        
         if(localStorage.getItem("liste"+tag) !=null){
             localStorage.removeItem("liste"+tag);
         }
@@ -160,16 +163,24 @@ else {
 }
     
 function log() {    //this function is used when you first open the page. It will ask for a name and a surname, it will then show it on the upper left corner, and let you use the list app
-    if (localStorage.getItem("name") != null) {
-        document.getElementById("logform").style.display = "none";
-        document.getElementById("logs").innerHTML=localStorage.getItem("surname")+" "+localStorage.getItem("name")
+    localStorage.setItem("name", document.getElementById("logsurname").value);  //we add the surname in the local storage
+    localStorage.setItem("surname", document.getElementById("name").value); //we also add the name in the storage
+}
+
+//this function is used to display or not certain elements on the web page
+function display() {
+    if (localStorage.getItem("name") != null) { //if the name is set this means someone is connected, so we can hide the form and show the creation list block
+        document.getElementById("form").style.display = "none";
+        document.getElementById("logs").innerHTML = localStorage.getItem("name") + " " + localStorage.getItem("surname");
     }
     else {
-        if (document.getElementById("logsurname") != null && isNaN(document.getElementById("logsurname")) ==true) {
-            localStorage.setItem("surname",document.getElementById("logsurname").value)
-        }
-        if (document.getElementById("name") !=null && isNaN(document.getElementById("name")) ==true ) {
-            localStorage.setItem("name",document.getElementById("name").value)
-        }
+        document.getElementById("add").style.display = "none";  //if the name isn't set this means that no one is connected, so we show the connection form
     }
+}
+
+//Function used to disconnect from your session and use another name
+function disconnect() {
+    localStorage.removeItem("surname"); //we remove the name in the storage
+    localStorage.removeItem("name");//we also remove the surname in the storage
+    location.reload();  //and we reload the page
 }
