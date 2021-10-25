@@ -14,30 +14,36 @@
         <h1 class="ui inverted" id="title">
             Tick Tick
         </h1>
+        <button class="ui inverted red button" onclick="disconnect()" id="disconnect">
+            Disconnect
+        </button>
 </div>
-<div class="ui input" id="create">
-    <input type="text" placeholder="Type a new list name" id="liste">
-</div>
-<button class="ui basic button" type="submit" name="category" id="temp" onclick="add()"><i class="list icon"></i>create a new todo list</button>
 
+
+<div id="add">
+    <div class="ui input" id="create" >
+        <input type="text" placeholder="Type a new list name" id="liste">
+    </div>
+    <button class="ui basic button" type="submit" name="category" id="temp" onclick="add()"><i class="list icon"></i>create a new todo list</button>
+</div>
+
+<form id="form" onsubmit="log()" name="form" method="post">
+    <div class="ui form" id="logform">
+        <div class="two fields">
+            <div class="field">
+                <label>First Name</label>
+                <input placeholder="First Name" type="text" id="logsurname">
+            </div>
+            <div class="field">
+                <label>Last Name</label>
+                <input placeholder="Last Name" id="name" type="text">
+            </div>
+        </div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
 </body>
 
-<form id="form" name="form" method="post" action=""></form>
-<div class="ui form" id="logform">
-    
-    <div class="two fields">
-        <div class="field">
-            <label>First Name</label>
-            <input placeholder="First Name" type="text" id="logsurname">
-        </div>
-        <div class="field">
-            <label>Last Name</label>
-            <input placeholder="Last Name" id="name" type="text" >
-        </div>
-    </div>
-    <input type="submit" value="Submit" onclick="log()">
-</div>
-</form>
+
 </html>
 <script type="text/javascript" src="project.js"></script>
-
